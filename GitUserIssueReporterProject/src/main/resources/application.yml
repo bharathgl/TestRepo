@@ -1,0 +1,47 @@
+#javelin:
+#  appKey: USERACCESS
+#  common:
+#    web:
+#      config:
+#        swagger:
+#          controllerPackage: com.mrll.javelin.useraccess.controller
+#          author: Dan Kirberger
+#          apiName: User Access API
+#          apiVersion: v1
+#          apiDescription: API for interacting with user security related functionality, such as mapping user teams, user roles, or user activation status
+
+spring:
+  data:
+    mongodb:
+      database: userJob
+  jackson:
+    deserialization:
+      read-unknown-enum-values-as-null: true
+
+
+#security:
+#  ignored:
+#    - /
+#    - /swagger-ui.html
+#    - /webjars/**
+#    - /swagger-resources
+#    - /swagger/**
+#    - /v2/**
+#    - /api/v1/access/internal/** # API Gateway has to call this, but we haven't created the JWT yet, this is a TODO
+#    - /api/v1/access/seed
+#    - /api/v1/access/globalAccessGroup/seed
+
+endpoints:
+  health:
+    sensitive: false
+#
+management:
+  security:
+    enabled: false
+  health:
+    rabbit:
+      enabled: false
+
+logging:
+  level:
+    com.netflix.discovery.DiscoveryClient: WARN
